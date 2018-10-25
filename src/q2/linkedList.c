@@ -49,7 +49,6 @@ listElement* insertAfter(listElement* el, char* data, size_t size){
   return newEl;
 }
 
-
 //Delete the element after the given el
 void deleteAfter(listElement* after){
   listElement* delete = after->next;
@@ -59,7 +58,6 @@ void deleteAfter(listElement* after){
   free(delete->data);
   free(delete);
 }
-
 
 // length of the linked list
 int length(listElement* list) {
@@ -74,16 +72,22 @@ int length(listElement* list) {
 
 // stack methods
 void push(listElement** list, char* data, size_t size) {
-
+  listElement* head = *list;
+  listElement* newHead = createEl(data, size);
+  newHead->next = *list;
+  *list = newHead;
 }
 
 listElement* pop(listElement** list) {
-  return NULL;
+  listElement* popped = *list;
+  *list = popped->next;  
+  popped->next = NULL;
+  return popped;
 }
 
 // queue methods
 void enqueue(listElement** list, char* data, size_t size) {
-  push(list, data, size);
+  
 }
 
 listElement* dequeue(listElement* list) {
@@ -93,5 +97,9 @@ listElement* dequeue(listElement* list) {
 // testing 
 // needed to add this to check the state of list elements in calling/test code
 char* elementData(listElement* current){
-  return "";
+  if(current == NULL){
+    return "";
+  }
+
+  return current->data;
 }

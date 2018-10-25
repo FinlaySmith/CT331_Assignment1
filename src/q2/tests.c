@@ -75,8 +75,8 @@ int q1_stack_push_should_add_to_top_of_list ( ) {
   listElement* head = createEl("Head", 5);
   push(&head, "Item1", 6);
 
-  AssertEquals("Item1", elementData(head), "Invalid node in head");
-
+  AssertEquals("Item1", elementData(head), "Invalid node in head");  
+ 
   return 0;
 }
 
@@ -90,9 +90,8 @@ int q1_stack_pop_should_remove_from_top_of_list ( ) {
 
   listElement* popped = pop(&head);
 
-
-  AssertEquals("Item3", elementData(popped), "Invalid node popped from stack.");
-  AssertEquals("Item2", elementData(head), "Invalid head node after popping from stack.");
+  AssertEquals("Item3", elementData(popped), "Invalid node popped from stack");
+  AssertEquals("Item2", elementData(head), "Invalid head node after popping from stack");
 
   return 0;
 }
@@ -103,13 +102,13 @@ int q1_queue_enqueue_should_add_to_top_of_list ( ) {
   listElement* head = createEl("Head", 5);
   enqueue(&head, "Item1", 6);
 
-  AssertEquals("Item1", elementData(head), "Invalid head node after enqueue.");
+  AssertEquals("Item1", elementData(head), "Invalid head node after enqueue");
  
   return 0;
 }
 
 int q1_queue_dequeue_should_remove_from_tail_of_list ( ) {
-  printf("    3.2 Dequeue should remove from the top of the list\n");
+  printf("    3.2 Dequeue should remove from the tail of the list\n");
   
   listElement* head = createEl("Head", 5);
 
@@ -120,7 +119,7 @@ int q1_queue_dequeue_should_remove_from_tail_of_list ( ) {
 
   listElement* queueItem = dequeue(head);
 
-  AssertEquals("Tail", elementData(queueItem), "Dequeued incorrect node.");
+  AssertEquals("Tail", elementData(queueItem), "Dequeued incorrect node");
  
   return 0;
 }
