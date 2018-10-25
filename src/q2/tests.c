@@ -9,7 +9,6 @@
 void runTests() {
   printf("Tests running...\n");
   listElement* l = createEl("Test String (1).", 30);
-  // printf("%s\n%p\n", l->data, l->next);
   // Test create and traverse
   traverse(l);
   printf("\n");
@@ -75,7 +74,7 @@ int q1_stack_push_should_add_to_top_of_list ( ) {
   listElement* head = createEl("Head", 5);
   push(&head, "Item1", 6);
 
-  AssertEquals("Item1", elementData(head), "Invalid node in head");  
+  AssertEquals("Item1", head->data, "Invalid node in head");  
  
   return 0;
 }
@@ -90,8 +89,8 @@ int q1_stack_pop_should_remove_from_top_of_list ( ) {
 
   listElement* popped = pop(&head);
 
-  AssertEquals("Item3", elementData(popped), "Invalid node popped from stack");
-  AssertEquals("Item2", elementData(head), "Invalid head node after popping from stack");
+  AssertEquals("Item3", popped->data, "Invalid node popped from stack");
+  AssertEquals("Item2", head->data, "Invalid head node after popping from stack");
 
   return 0;
 }
@@ -102,7 +101,7 @@ int q1_queue_enqueue_should_add_to_top_of_list ( ) {
   listElement* head = createEl("Head", 5);
   enqueue(&head, "Item1", 6);
 
-  AssertEquals("Item1", elementData(head), "Invalid head node after enqueue");
+  AssertEquals("Item1", head->data, "Invalid head node after enqueue");
  
   return 0;
 }
@@ -119,7 +118,7 @@ int q1_queue_dequeue_should_remove_from_tail_of_list ( ) {
 
   listElement* queueItem = dequeue(head);
 
-  AssertEquals("First", elementData(queueItem), "Dequeued incorrect node");
+  AssertEquals("First", queueItem->data, "Dequeued incorrect node");
  
   return 0;
 }
@@ -130,7 +129,7 @@ int AssertEquals(char* expected, char* actual, char* message) {
         actual = "NULL";
     }
     if(strcmp(expected, actual) != 0){
-        // TODO: check . . . . .  bad, bad....
+        // TODO: check, does this truncate or ... . . . . .  bad, bad....
         char* outputMessage = malloc(1000);
         snprintf(outputMessage, 1000, "%s, expected '%s', actual '%s'", message, expected, actual);
 

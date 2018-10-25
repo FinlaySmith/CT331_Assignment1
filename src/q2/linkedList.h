@@ -1,7 +1,11 @@
 #ifndef CT331_ASSIGNMENT_LINKED_LIST
 #define CT331_ASSIGNMENT_LINKED_LIST
 
-typedef struct listElementStruct listElement;
+typedef struct listElementStruct{
+  char* data;
+  size_t size;
+  struct listElementStruct* next;
+} listElement;
 
 //Creates a new linked list element with given content of size
 //Returns a pointer to the element
@@ -33,9 +37,5 @@ listElement* pop(listElement** list);
 void enqueue(listElement** list, char* data, size_t size);
 
 listElement* dequeue(listElement* list);
-
-// testing 
-// needed to add this to check the state of list elements in calling/test code
-char* elementData(listElement* current);
 
 #endif
