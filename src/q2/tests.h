@@ -15,5 +15,6 @@ int q1_queue_dequeue_should_remove_from_tail_of_list();
 
 // test framework code
 int Assert(int condition, char* message);
+int AssertEquals(char* expected, char* actual, char* message);
 
 #endif

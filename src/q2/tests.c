@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include "tests.h"
@@ -62,6 +63,7 @@ int q1_length_test(){
   listElement* tail = insertAfter(item3, "Tail", 5);
   
   int listLength = length(head);
+
   Assert(listLength == 5, "Invalid list length");
 
   return 0;
@@ -73,9 +75,7 @@ int q1_stack_push_should_add_to_top_of_list ( ) {
   listElement* head = createEl("Head", 5);
   push(&head, "Item1", 6);
 
-  char* data = elementData(head);
-
-  Assert(strcmp(data, "Item1")==1, "Invalid node in head");
+  AssertEquals("Item1", elementData(head), "Invalid node in head");
 
   return 0;
 }
@@ -90,9 +90,10 @@ int q1_stack_pop_should_remove_from_top_of_list ( ) {
 
   listElement* popped = pop(&head);
 
-  Assert(strcmp(elementData(popped), "Item3")==1, "Invalid node Popped from stack");
-  Assert(strcmp(elementData(head), "Item2")==1, "Invalid head node after popping from stack");
- 
+
+  AssertEquals("Item3", elementData(popped), "Invalid node popped from stack.");
+  AssertEquals("Item2", elementData(head), "Invalid head node after popping from stack.");
+
   return 0;
 }
 
@@ -102,7 +103,7 @@ int q1_queue_enqueue_should_add_to_top_of_list ( ) {
   listElement* head = createEl("Head", 5);
   enqueue(&head, "Item1", 6);
 
-  Assert(strcmp(elementData(head), "Item1")==1, "Invalid head node after enqueue");
+  AssertEquals("Item1", elementData(head), "Invalid head node after enqueue.");
  
   return 0;
 }
@@ -119,9 +120,26 @@ int q1_queue_dequeue_should_remove_from_tail_of_list ( ) {
 
   listElement* queueItem = dequeue(head);
 
-  Assert(strcmp(elementData(head), "Tail")==1, "Dequeued incorrect node");
+  AssertEquals("Tail", elementData(queueItem), "Dequeued incorrect node.");
  
   return 0;
+}
+
+
+int AssertEquals(char* expected, char* actual, char* message) {
+    if(actual == NULL){
+        actual = "NULL";
+    }
+    if(strcmp(expected, actual) != 0){
+        // TODO: check . . . . .  bad, bad....
+        char* outputMessage = malloc(1000);
+        snprintf(outputMessage, 1000, "%s, expected '%s', actual '%s'", message, expected, actual);
+
+        Assert(0, outputMessage);
+        return 1;
+    }
+
+    return 0;
 }
 
 int Assert(int condition, char* message) {
