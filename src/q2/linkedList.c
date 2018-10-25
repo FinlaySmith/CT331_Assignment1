@@ -87,11 +87,28 @@ listElement* pop(listElement** list) {
 
 // queue methods
 void enqueue(listElement** list, char* data, size_t size) {
-  
+  push(list, data, size);
 }
 
+// as this is not listElement** we cannot dequeue the 
+// last item from he queue
 listElement* dequeue(listElement* list) {
-  return NULL;
+
+  // find tail
+  listElement* previous = NULL; 
+  listElement* tail = list;
+  while(tail->next != NULL){
+    previous = tail;
+    tail = tail->next;
+  }
+
+  // disconnect from previous node
+  if(previous != NULL){
+    previous->next = NULL;
+  }
+  // as we do not have a 
+
+  return tail;
 }
 
 // testing 

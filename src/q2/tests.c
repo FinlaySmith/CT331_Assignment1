@@ -9,8 +9,8 @@
 void runTests() {
   printf("Tests running...\n");
   listElement* l = createEl("Test String (1).", 30);
-  //printf("%s\n%p\n", l->data, l->next);
-  //Test create and traverse
+  // printf("%s\n%p\n", l->data, l->next);
+  // Test create and traverse
   traverse(l);
   printf("\n");
 
@@ -110,16 +110,16 @@ int q1_queue_enqueue_should_add_to_top_of_list ( ) {
 int q1_queue_dequeue_should_remove_from_tail_of_list ( ) {
   printf("    3.2 Dequeue should remove from the tail of the list\n");
   
-  listElement* head = createEl("Head", 5);
+  listElement* head = createEl("First", 5);
 
-  enqueue(&head, "Item1", 6);
-  enqueue(&head, "Item2", 6);
-  enqueue(&head, "Item3", 6);
-  enqueue(&head, "Tail", 5);
+  enqueue(&head, "Second", 6);
+  enqueue(&head, "Third", 6);
+  enqueue(&head, "Fourth", 6);
+  enqueue(&head, "Fifth", 5);
 
   listElement* queueItem = dequeue(head);
 
-  AssertEquals("Tail", elementData(queueItem), "Dequeued incorrect node");
+  AssertEquals("First", elementData(queueItem), "Dequeued incorrect node");
  
   return 0;
 }
