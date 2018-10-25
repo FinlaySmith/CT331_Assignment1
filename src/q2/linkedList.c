@@ -63,7 +63,13 @@ void deleteAfter(listElement* after){
 
 // length of the linked list
 int length(listElement* list) {
-  return -1;
+  listElement* element = list;
+  int len = 0;
+  while(element != NULL){
+    element = element->next;
+    len++;
+  }
+  return len;
 }
 
 // stack methods

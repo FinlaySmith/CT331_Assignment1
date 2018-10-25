@@ -45,8 +45,10 @@ int q1_length_null_listElement_should_return_length_of_0 ( ) {
 
 int q1_length_single_listElement_should_return_length_of_1 ( ) {
   printf("    1.2  Single listElement should return length of 1\n");
-  int listLength = length(NULL);
-  Assert(listLength == 1, "NULL listElement, length should return 0");
+
+  listElement* head = createEl("HEAD Node", 10);
+
+  Assert(length(head) == 1, "NULL listElement, length should return 0");
 
   return 0;
 }
@@ -59,8 +61,8 @@ int q1_length_test(){
   listElement* item3 = insertAfter(item2, "Item3", 6);
   listElement* tail = insertAfter(item3, "Tail", 5);
   
-  int listLength = length(tail);
-  Assert(listLength == 10, "Invalid list length");
+  int listLength = length(head);
+  Assert(listLength == 5, "Invalid list length");
 
   return 0;
 }
