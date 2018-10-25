@@ -17,5 +17,25 @@ listElement* insertAfter(listElement* after, char* data, size_t size);
 //Delete the element after the given el
 void deleteAfter(listElement* after);
 
+// Additional Assignment Methods
+
+// length of the linked list
+int length(listElement* list);
+
+// stack methods
+
+void push(listElement** list, char* data, size_t size);
+
+listElement* pop(listElement** list);
+
+// queue methods
+
+void enqueue(listElement** list, char* data, size_t size);
+
+listElement* dequeue(listElement* list);
+
+// testing 
+// needed to add this to check the state of list elements in calling/test code
+char* elementData(listElement* current);
 
 #endif

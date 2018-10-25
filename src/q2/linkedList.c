@@ -59,3 +59,33 @@ void deleteAfter(listElement* after){
   free(delete->data);
   free(delete);
 }
+
+
+// length of the linked list
+int length(listElement* list) {
+  return -1;
+}
+
+// stack methods
+void push(listElement** list, char* data, size_t size) {
+
+}
+
+listElement* pop(listElement** list) {
+  return NULL;
+}
+
+// queue methods
+void enqueue(listElement** list, char* data, size_t size) {
+  push(list, data, size);
+}
+
+listElement* dequeue(listElement* list) {
+  return NULL;
+}
+
+// testing 
+// needed to add this to check the state of list elements in calling/test code
+char* elementData(listElement* current){
+  return "";
+}
