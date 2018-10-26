@@ -104,13 +104,3 @@ listElement* dequeue(listElement* list) {
 
   return tail;
 }
-
-// testing 
-// needed to add this to check the state of list elements in calling/test code
-char* elementData(listElement* current){
-  if(current == NULL){
-    return "";
-  }
-
-  return current->data;
-}
