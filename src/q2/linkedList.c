@@ -3,12 +3,6 @@
 #include <string.h>
 #include "linkedList.h"
 
-typedef struct listElementStruct{
-  char* data;
-  size_t size;
-  struct listElementStruct* next;
-} listElement;
-
 //Creates a new linked list element with given content of size
 //Returns a pointer to the element
 listElement* createEl(char* data, size_t size){
@@ -49,7 +43,6 @@ listElement* insertAfter(listElement* el, char* data, size_t size){
   return newEl;
 }
 
-
 //Delete the element after the given el
 void deleteAfter(listElement* after){
   listElement* delete = after->next;
@@ -58,4 +51,56 @@ void deleteAfter(listElement* after){
   //need to free the memory because we used malloc
   free(delete->data);
   free(delete);
+}
+
+// length of the linked list
+int length(listElement* list) {
+  listElement* element = list;
+  int len = 0;
+  while(element != NULL){
+    element = element->next;
+    len++;
+  }
+  return len;
+}
+
+// stack methods
+void push(listElement** list, char* data, size_t size) {
+  listElement* head = *list;
+  listElement* newHead = createEl(data, size);
+  newHead->next = *list;
+  *list = newHead;
+}
+
+listElement* pop(listElement** list) {
+  listElement* popped = *list;
+  *list = popped->next;  
+  popped->next = NULL;
+  return popped;
+}
+
+// queue methods
+void enqueue(listElement** list, char* data, size_t size) {
+  push(list, data, size);
+}
+
+// as this is not listElement** we cannot dequeue the 
+// last item from he queue
+listElement* dequeue(listElement* list) {
+
+  // find tail
+  listElement* previous = NULL; 
+  listElement* tail = list;
+  while(tail->next != NULL){
+    previous = tail;
+    tail = tail->next;
+  }
+
+  // disconnect from previous node
+  if(previous != NULL){
+    previous->next = NULL;
+  }
+  // as we do not have a 
+
+  return tail;
 }

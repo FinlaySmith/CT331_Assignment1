@@ -1,7 +1,11 @@
 #ifndef CT331_ASSIGNMENT_LINKED_LIST
 #define CT331_ASSIGNMENT_LINKED_LIST
 
-typedef struct listElementStruct listElement;
+typedef struct listElementStruct{
+  char* data;
+  size_t size;
+  struct listElementStruct* next;
+} listElement;
 
 //Creates a new linked list element with given content of size
 //Returns a pointer to the element
@@ -17,5 +21,21 @@ listElement* insertAfter(listElement* after, char* data, size_t size);
 //Delete the element after the given el
 void deleteAfter(listElement* after);
 
+// Additional Assignment Methods
+
+// length of the linked list
+int length(listElement* list);
+
+// stack methods
+
+void push(listElement** list, char* data, size_t size);
+
+listElement* pop(listElement** list);
+
+// queue methods
+
+void enqueue(listElement** list, char* data, size_t size);
+
+listElement* dequeue(listElement* list);
 
 #endif
